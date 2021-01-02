@@ -21,6 +21,9 @@ class V1::TasksController < ApplicationController
   end
 
   def destroy
+    task = Task.find(params[:id])
+    task.destroy
+    render json: true
   end
 
   private
