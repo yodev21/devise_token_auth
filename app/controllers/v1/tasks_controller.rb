@@ -8,7 +8,7 @@ class V1::TasksController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:headers][:uid])
+    user = User.find_by(email: params[:uid])
     task = Task.new(title: params[:title], content: params[:content], user_id: user.id)
     task.save
   end
