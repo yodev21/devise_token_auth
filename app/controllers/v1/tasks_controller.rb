@@ -3,7 +3,7 @@ class V1::TasksController < ApplicationController
   before_action :set_task, only: [:show]
   before_action :authenticate_v1_user!
   def index
-    tasks = Task.all
+    tasks = Task.where(user_id: @current_v1_user.id)
     render json: tasks
   end
 
