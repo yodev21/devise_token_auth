@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <router-link to="/" class="header-item">掲示板</router-link>
+      <router-link to="/" class="header-item">タスク一覧</router-link>
       <router-link to="/login" class="header-item">SignIn</router-link>
       <router-link to="/register" class="header-item">SignUp</router-link>
     </header>
