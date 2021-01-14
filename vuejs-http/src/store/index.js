@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios'
+import router from '../router'
 
 Vue.use(Vuex);
 
@@ -41,6 +42,7 @@ export default new Vuex.Store({
           commit('updateUidToken', response.headers["uid"])
           commit('updateAccessToken', response.headers["access-token"])
           commit('updateClientToken', response.headers["client"])
+          router.push('/')
         });
     },
     register({commit}, authData) {
@@ -53,6 +55,7 @@ export default new Vuex.Store({
           commit('updateUidToken', response.headers["uid"])
           commit('updateAccessToken', response.headers["access-token"])
           commit('updateClientToken', response.headers["client"])
+          router.push('/')
         });
     },
     reload({ commit }) {
