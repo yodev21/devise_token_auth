@@ -1,14 +1,26 @@
 <template>
   <div id="app">
     <header>
-      <router-link to="/" class="header-item">タスク一覧</router-link>
-      <router-link to="/login" class="header-item">SignIn</router-link>
-      <router-link to="/register" class="header-item">SignUp</router-link>
+      <template v-if="isAuthenticated">
+        <router-link to="/" class="header-item">タスク一覧</router-link>
+      </template>
+      <template v-if="!isAuthenticated">
+        <router-link  outer-link to="/login" class="header-item">SignIn</router-link>
+        <router-link to="/register" class="header-item">SignUp</router-link>
+      </template>
     </header>
     <router-view></router-view>
   </div>
 </template>
-
+<script>
+export default {
+  computed: {
+    isAuthenticated(){
+      return this.$store.getters.uidToken !== null
+    }
+  }
+}
+</script>
 <style scoped>
   .header-item{
     padding: 10px;
