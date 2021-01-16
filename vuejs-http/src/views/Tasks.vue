@@ -1,15 +1,31 @@
 <template>
   <div id="app">
-    <h3>タスクを投稿する</h3>
-      <h1>Task All</h1>
-      <!-- <button @click="signout">サインアウト</button> -->
-      <div v-for="task in tasks" :key="task.id">
-        Task:{{ task.id }}, {{ task.title }}, {{ task.content }}
-        <button @click="find_task(task.id)">task_find</button>
-        <button @click="delete_task(task.id)">Delete</button>
-      </div>
-      <button @click="all_tasks">Task All</button>
-
+      <v-btn @click="all_tasks">Task All</v-btn>
+      <v-simple-table>
+          <thead>
+            <tr>
+              <th class="text-left">
+                ID
+              </th>
+              <th class="text-left">
+                Title
+              </th>
+              <th class="text-left">
+                Content
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="task in tasks"
+              :key="task.id"
+            >
+              <td>{{ task.id}}</td>
+              <td>{{ task.title }}</td>
+              <td>{{ task.content }}</td>
+            </tr>
+          </tbody>
+      </v-simple-table>
       <h3>Task</h3>
       <v-text-field 
         label="Task"
