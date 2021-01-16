@@ -42,7 +42,7 @@ export default {
     }
   },
   created(){
-    this.$store.dispatch('reload')
+    console.log('fire')
   },
   methods: {
     all_tasks() {

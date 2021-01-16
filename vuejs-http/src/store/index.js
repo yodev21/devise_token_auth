@@ -31,6 +31,13 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    autoLogin({ commit }) {
+      const uidToken = localStorage.getItem('uid')
+      console.log(uidToken)
+      if (!uidToken) return;
+      
+      commit('updateUidToken', uidToken)
+    },
     login({ commit }, authData) { 
       axios
         .post("http://localhost:3000/v1/auth/sign_in", {
@@ -42,6 +49,7 @@ export default new Vuex.Store({
           commit('updateUidToken', response.headers["uid"])
           commit('updateAccessToken', response.headers["access-token"])
           commit('updateClientToken', response.headers["client"])
+          console.log(response.data)
           router.push('/')
         });
     },
@@ -57,6 +65,15 @@ export default new Vuex.Store({
           commit('updateClientToken', response.headers["client"])
           router.push('/')
         });
+    },
+    logout({ commit }) {
+      commit('updateUidToken', null)
+      localStorage.removeItem("uid");
+      commit('updateAccessToken', null)
+      localStorage.removeItem("access-token");
+      commit('updateClientToken', null)
+      localStorage.removeItem("client");
+      router.push('/login')
     },
     reload({ commit }) {
       commit('updateUidToken', localStorage.getItem("uid"))
