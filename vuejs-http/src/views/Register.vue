@@ -1,10 +1,23 @@
 <template>
   <div id="app">
     <h3>SignUp</h3>
-    <label for="email">Email</label>
-    <v-text-field id="email" type="email" v-model="email" />
-    <label for="password">Password</label>
-    <v-text-field id="password" type="password" v-model="password" />
+    <v-text-field
+      label="Email"
+      type="email"
+      filled
+      rounded
+      dense
+      v-model="email"
+    >
+    </v-text-field>
+    <v-text-field
+      label="Password"
+      type="password"
+      filled
+      rounded
+      dense
+      v-model="password"
+    ></v-text-field>
     <v-btn @click="register">SignUp</v-btn>
 
   </div>
