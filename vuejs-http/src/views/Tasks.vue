@@ -11,11 +11,17 @@
       <button @click="all_tasks">Task All</button>
 
       <h3>Task</h3>
-      <label for="title">task</label>
-      <input id="title" type="text" v-model="title" />
-      <label for="content">content</label>
-      <input id="content" type="text" v-model="content" />
-      <button @click="create_task">Create_Task</button>
+      <v-text-field 
+        label="Task"
+        id="title"
+        v-model="title"
+      ></v-text-field>
+      <v-text-field
+        label="Content"
+        id="content"
+        v-model="content"
+      ></v-text-field>
+      <v-btn @click="create_task">Create_Task</v-btn>
   </div>
 </template>
 
