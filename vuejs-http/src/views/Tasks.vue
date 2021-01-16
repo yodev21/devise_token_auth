@@ -1,33 +1,6 @@
 <template>
   <div id="app">
     <TaskIndex></TaskIndex>
-    <v-btn @click="all_tasks">Task All</v-btn>
-    <v-simple-table>
-      <thead>
-        <tr>
-          <th class="text-left">
-            ID
-          </th>
-          <th class="text-left">
-            Title
-          </th>
-          <th class="text-left">
-            Content
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="task in tasks"
-          :key="task.id"
-          @click="toggleTaskModal"
-        >
-          <td>{{ task.id}}</td>
-          <td>{{ task.title }}</td>
-          <td>{{ task.content }}</td>
-        </tr>
-      </tbody>
-    </v-simple-table>
       <v-btn @click="toggleTaskModal">New Task</v-btn>
       <v-dialog v-model="dialogPostFlag" width="800" persistent>
         <v-card>
@@ -52,14 +25,13 @@
 
 <script>
 import axios from "axios";
-import TaskIndex from '../components/TaskIndex.vue'
+import TaskIndex from '../components/TaskIndex'
 export default {
   data() {
     return {
       name: "",
       title: "",
       content: "",
-      tasks: [],
       dialogPostFlag: false,
     };
   },
@@ -75,28 +47,17 @@ export default {
     }
   },
   name: 'Tasks',
-  componets: {
+  components: {
     TaskIndex,
   },
   created(){
     console.log('fire')
+    this.$store.dispatch('reload')
+    // this.all_tasks()
   },
   methods: {
     toggleTaskModal(){
       this.dialogPostFlag = !this.dialogPostFlag
-    },
-    all_tasks() {
-      axios
-        .get("http://localhost:3000/v1/tasks", {
-          headers: {
-            uid: this.uidToken,
-            "access-token": this.accessToken,
-            client: this.clientToken
-          },
-        })
-        .then((response) => {
-          this.tasks = response.data;
-        });
     },
     find_task(task_id) {
       axios

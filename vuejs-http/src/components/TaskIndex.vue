@@ -1,8 +1,5 @@
 <template>
-  <h1>Hello</h1>
-<!--   
   <v-simple-table>
-    <h1>Helo</h1>
       <thead>
         <tr>
           <th class="text-left">
@@ -26,5 +23,44 @@
           <td>{{ task.content }}</td>
         </tr>
       </tbody>
-  </v-simple-table> -->
+  </v-simple-table>
 </template>
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      tasks: []
+    }
+  },
+  created(){
+    this.all_tasks()
+  },
+  computed: {
+    uidToken(){
+      return this.$store.getters.uidToken
+    },
+    accessToken(){
+      return this.$store.getters.accessToken
+    },
+    clientToken(){
+      return this.$store.getters.clientToken
+    }
+  },
+  methods: {
+    all_tasks() {
+      axios
+        .get("http://localhost:3000/v1/tasks", {
+          headers: {
+            uid: this.uidToken,
+            "access-token": this.accessToken,
+            client: this.clientToken
+          },
+        })
+        .then((response) => {
+          this.tasks = response.data;
+        });
+    },
+  }
+}
+</script>
