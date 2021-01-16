@@ -1,16 +1,27 @@
 <template>
   <div id="app">
-    <header>
-      <template v-if="isAuthenticated">
-        <router-link to="/" class="header-item">タスク一覧</router-link>
-        <span to="/" class="header-item" @click="logout">ログアウト</span>
-      </template>
-      <template v-if="!isAuthenticated">
-        <router-link  outer-link to="/login" class="header-item">SignIn</router-link>
-        <router-link to="/register" class="header-item">SignUp</router-link>
-      </template>
-    </header>
-    <router-view></router-view>
+  <v-app>
+    <v-app-bar color="primary" dark app>
+      <v-toolbar-title>Vuetify</v-toolbar-title>
+
+      <header>
+        <template v-if="isAuthenticated">
+          <span to="/" class="header-item">タスク一覧</span>
+          <span to="/" class="header-item" @click="logout">ログアウト</span>
+        </template>
+        <template v-if="!isAuthenticated">
+          <router-link  to="/login" class="header-item">SignIn</router-link>
+          <router-link to="/register" class="header-item">SignUp</router-link>
+        </template>
+
+      
+      </header>
+    </v-app-bar>
+      <router-view></router-view>
+    <v-footer color="primary" dark app>
+      Vuetify
+    </v-footer>
+  </v-app>
   </div>
 </template>
 <script>
