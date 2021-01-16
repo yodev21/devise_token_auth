@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <TaskIndex></TaskIndex>
     <v-btn @click="all_tasks">Task All</v-btn>
     <v-simple-table>
       <thead>
@@ -19,6 +20,7 @@
         <tr
           v-for="task in tasks"
           :key="task.id"
+          @click="toggleTaskModal"
         >
           <td>{{ task.id}}</td>
           <td>{{ task.title }}</td>
@@ -72,6 +74,7 @@ export default {
       return this.$store.getters.clientToken
     }
   },
+  name: 'Tasks',
   componets: {
     TaskIndex,
   },

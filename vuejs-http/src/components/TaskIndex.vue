@@ -1,5 +1,6 @@
 <template>
-  
+  <h1>Hello</h1>
+<!--   
   <v-simple-table>
     <h1>Helo</h1>
       <thead>
@@ -25,5 +26,5 @@
           <td>{{ task.content }}</td>
         </tr>
       </tbody>
-  </v-simple-table>
+  </v-simple-table> -->
 </template>
