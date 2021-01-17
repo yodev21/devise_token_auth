@@ -33,7 +33,6 @@ export default new Vuex.Store({
   actions: {
     autoLogin({ commit }) {
       const uidToken = localStorage.getItem('uid')
-      console.log(uidToken)
       if (!uidToken) return;
       
       commit('updateUidToken', uidToken)
@@ -45,11 +44,9 @@ export default new Vuex.Store({
           password: authData.password,
         })
         .then((response) => {
-          console.log(response);
           commit('updateUidToken', response.headers["uid"])
           commit('updateAccessToken', response.headers["access-token"])
           commit('updateClientToken', response.headers["client"])
-          console.log(response.data)
           router.push('/')
         });
     },

@@ -47,7 +47,6 @@ export default new Router({
       path: '/tasks/:id',
       component: TaskDetail,
       beforeEnter(to, from, next) {
-        console.log("show")
         if (store.getters.uidToken) {
           next()
         } else {

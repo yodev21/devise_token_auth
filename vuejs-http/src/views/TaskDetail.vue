@@ -22,7 +22,8 @@
           <td>{{ content }}</td>
         </tr>
       </tbody>
-  </v-simple-table>
+    </v-simple-table>
+    
   </div>
 </template>
 <script>

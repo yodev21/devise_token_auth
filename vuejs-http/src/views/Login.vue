@@ -50,8 +50,7 @@ export default {
             client: this.client,
           },
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           this.access_token = "";
           this.client = "";
           this.uid = "";

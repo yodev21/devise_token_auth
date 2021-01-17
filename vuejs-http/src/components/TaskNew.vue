@@ -57,7 +57,6 @@ export default {
           content: this.content,
         })
         // .then((response) => {
-        //   console.log(response);
         //   this.all_tasks();
         // });
 
