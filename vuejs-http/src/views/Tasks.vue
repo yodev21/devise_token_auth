@@ -1,14 +1,12 @@
 <template>
   <div id="app">
     <TaskIndex></TaskIndex>
-    <TaskNew></TaskNew>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import TaskIndex from '../components/TaskIndex'
-import TaskNew from '../components/TaskNew'
 
 export default {
   computed: {
@@ -24,8 +22,7 @@ export default {
   },
   name: 'Tasks',
   components: {
-    TaskIndex,
-    TaskNew
+    TaskIndex
   },
   created(){
     this.$store.dispatch('reload')
@@ -41,7 +38,6 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response);
           this.task = response.data;
         });
     },
@@ -54,8 +50,7 @@ export default {
             client: this.clientToken
           },
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           this.all_tasks();
         });
     },
