@@ -43,7 +43,7 @@ export default {
       })
       .then((response) => {
         this.task = response.data;
-      });
+    });
   }
 }
 </script>
